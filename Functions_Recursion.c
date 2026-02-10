@@ -7,10 +7,13 @@ int main() {
     int number;
     int sum;
 
-    printf("Enter a positive number to calculate factorial: ");
+    printf("Enter a positive number: ");
     scanf("%d", &number);
 
-    printf("Factorial of %d is %d\n", number, factorial(number));
+    printf("Factorials from 1 to %d:\n", number);
+    for (int i = 1; i <= number; i++) {
+        printf("%d! = %d\n", i, factorial(i));
+    }
 
     sum = addNumbers(number, 10);
     printf("%d + 10 = %d\n", number, sum);
