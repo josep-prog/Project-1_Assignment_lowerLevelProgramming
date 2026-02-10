@@ -7,8 +7,6 @@ int main() {
     int number;
     int sum;
 
-    printHello();
-
     printf("Enter a positive number to calculate factorial: ");
     scanf("%d", &number);
 
