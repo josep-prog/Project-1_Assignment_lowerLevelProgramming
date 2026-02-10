@@ -2,7 +2,6 @@
 
 int factorial(int n);
 int addNumbers(int a, int b);
-void printHello();
 
 int main() {
     int number;
