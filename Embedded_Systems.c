@@ -1,25 +1,26 @@
-#include <Arduino.h>
-
-int tempSensor = A0;
-int fan = 8;
-int thresholdTemp = 30;
+#define TEMP_SENSOR_PIN 0
+#define FAN_PIN 8
+#define THRESHOLD_TEMP 30
 
 void setup() {
-    pinMode(fan, OUTPUT);
+    pinMode(FAN_PIN, OUTPUT);
     Serial.begin(9600);
 }
 
 void loop() {
-    int sensorReading = analogRead(tempSensor);
-    float tempC = sensorReading * (5.0 / 1023) * 100;
-    Serial.print("Temp: ");
-    Serial.println(tempC);
+    int sensorValue = analogRead(TEMP_SENSOR_PIN);
 
-    if (tempC > thresholdTemp) {
-        digitalWrite(fan, HIGH);  // Turn fan ON
+    float voltage = sensorValue * (5.0 / 1023.0);
+    float temperature = voltage * 100.0;
+
+    Serial.print("Temp: ");
+    Serial.println(temperature);
+
+    if (temperature > THRESHOLD_TEMP) {
+        digitalWrite(FAN_PIN, 1); // ON
     } else {
-        digitalWrite(fan, LOW);   // Turn fan OFF
+        digitalWrite(FAN_PIN, 0); // OFF
     }
 
-    delay(1000);
+    delay(1000); 
 }
